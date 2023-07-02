@@ -4,9 +4,14 @@ import UrlScan
 import os
 import random
 import re
+from dotenv import load_dotenv
 
 os.system("clear")
 client = discord.Client(intents=discord.Intents.all())
+
+load_dotenv()
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+VT_TOKEN = os.getenv('VT_TOKEN')
 
 
 def has_role(user, role_id):
@@ -290,4 +295,4 @@ async def on_reaction_add(reaction, user):
                                                   channel=guild_dict[f'{user.guild.id}']['log_channel'])
 
 
-client.run("MTAwODcyOTQ5MjUwOTk1NDEyOQ.GZUBF7.9orAyc5or6PeXoKevimiFDotlNjgTryPerHg3A")
+client.run(DISCORD_TOKEN)

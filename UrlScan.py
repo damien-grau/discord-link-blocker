@@ -2,6 +2,7 @@ import time
 import base64
 import requests
 import json
+from main import VT_TOKEN
 
 """
 4 requests/min
@@ -21,14 +22,10 @@ async def scan_url(url):
     print("Request to", full_url)
     headers = {
         "accept": "application/json",
-        "x-apikey": "85456b677bfab3ee4eca5a6f1f1a270dba34511ebf2dda4048f5753dac34e73e"
+        "x-apikey": VT_TOKEN
     }
     scan = json.loads(requests.get(full_url, headers=headers).text)
     scan_stats = scan["data"]["attributes"]["last_analysis_stats"]
     print(f"Last analysis stats for {url} :")
     print(scan_stats)
     return True if scan_stats['malicious'] else False
-
-
-
-
