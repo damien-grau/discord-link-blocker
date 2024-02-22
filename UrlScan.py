@@ -32,3 +32,4 @@ async def scan_url(url):
         return True if scan_stats['malicious'] else False
     except KeyError as keyword:
         print(f"KeyError, {keyword} not found.\nFull response of {full_url} :\n{scan}")
+        return False
