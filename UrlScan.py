@@ -25,7 +25,10 @@ async def scan_url(url):
         "x-apikey": VT_TOKEN
     }
     scan = json.loads(requests.get(full_url, headers=headers).text)
-    scan_stats = scan["data"]["attributes"]["last_analysis_stats"]
-    print(f"Last analysis stats for {url} :")
-    print(scan_stats)
-    return True if scan_stats['malicious'] else False
+    try:
+        scan_stats = scan["data"]["attributes"]["last_analysis_stats"]
+        print(f"Last analysis stats for {url} :")
+        print(scan_stats)
+        return True if scan_stats['malicious'] else False
+    except KeyError as keyword:
+        print(f"KeyError, {keyword} not found.\nFull response of {full_url} :\n{scan}")
