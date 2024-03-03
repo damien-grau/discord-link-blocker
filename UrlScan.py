@@ -2,12 +2,16 @@ import time
 import base64
 import requests
 import json
-from main import VT_TOKEN
+from dotenv import load_dotenv
+import os
 
 """
 4 requests/min
 500 requests/day
 """
+
+load_dotenv()
+VT_TOKEN = os.getenv('VT_TOKEN')
 
 
 async def scan_url(url):
