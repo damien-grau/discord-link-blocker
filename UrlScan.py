@@ -60,3 +60,4 @@ async def scan_url(url: str) -> bool:
         print(f"[VirusTotal] Erreur inattendue : {e}")
         return False
 
+
